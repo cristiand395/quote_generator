@@ -1,0 +1,1 @@
+##Basic single page to use an api to show random quotes. 

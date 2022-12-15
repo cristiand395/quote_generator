@@ -3,10 +3,23 @@ const quoteText = document.getElementById('quote');
 const author = document.getElementById('author');
 const newQuoteButton = document.getElementById('new-quote');
 const twitterButton = document.getElementById('twitter');
+const loader = document.getElementById('loader');
 
 let quotes = []
 
+// Loader
+function loading() {
+    quoteCOntainer.style.display = 'none';
+    loader.hidden = false;
+}
+
+function complete() {
+    quoteCOntainer.style.display = 'block';
+    loader.hidden = true;
+}
+
 function getNewQuote() {
+    loading()
     const quote = quotes[Math.floor(Math.random() * quotes.length)]
     // Handle unknown author
     if (!quote.author){
@@ -21,6 +34,7 @@ function getNewQuote() {
         quoteText.classList.remove('long-quote');
     }
     quoteText.textContent = quote.text
+    complete();
 }
 
 //Get Quotes from API
